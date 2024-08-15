@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString
-@Document(collection = "product")
+@Document(collection = "products")
 public class Product {
     @Id
     private String id;
