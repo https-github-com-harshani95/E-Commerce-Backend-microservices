@@ -11,13 +11,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-@Configuration
+@Component
 public class JwtAuthConvertor  implements Converter<Jwt, AbstractAuthenticationToken> {
 
     @Override
@@ -26,7 +27,6 @@ public class JwtAuthConvertor  implements Converter<Jwt, AbstractAuthenticationT
         return new JwtAuthenticationToken(source, roles);
     }
 
-    @Bean
     public Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
         if (jwt.getClaim("realm_access") != null) {
             Map<String, Object> realmAccess = jwt.getClaim("realm_access");
