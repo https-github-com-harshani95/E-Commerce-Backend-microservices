@@ -1,5 +1,11 @@
 package com.devstack.user_service_api.exception;
 
-public class EntryNotFoundException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class EntryNotFoundException extends RuntimeException{
+    public EntryNotFoundException(String message) {
+        super(message);
+    }
 }

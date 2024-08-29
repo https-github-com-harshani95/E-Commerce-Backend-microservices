@@ -1,6 +1,7 @@
 package com.devstack.user_service_api.controller;
 
 import com.devstack.user_service_api.dto.request.RequestSystemUserDto;
+import com.devstack.user_service_api.dto.request.RequestUserLoginDto;
 import com.devstack.user_service_api.service.SystemUserService;
 import com.devstack.user_service_api.util.StandardResponse;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,16 @@ public class SystemUserController {
         return new ResponseEntity<>(
                 new StandardResponse(201, "User registered..", null),
                 HttpStatus.CREATED
+        );
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<StandardResponse> loginUser(@RequestBody RequestUserLoginDto requestUserLoginDto) {
+        return new ResponseEntity<>(
+                new StandardResponse(200,
+                        "Login Successful!", systemUserService.login(requestUserLoginDto.getUsername(),
+                        requestUserLoginDto.getPassword())),
+                HttpStatus.OK
         );
     }
 }
