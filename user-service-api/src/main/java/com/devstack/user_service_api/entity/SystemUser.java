@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Builder
 @Entity(name = "system_user")
 public class SystemUser {
     @Id
