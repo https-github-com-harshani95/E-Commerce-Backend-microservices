@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString
+@Builder
 @Document(collection = "products")
 public class Product {
     @Id
@@ -16,5 +17,5 @@ public class Product {
     private String description;
     private double unitPrice;
     private int qtyOnHand;
-
+    private FileData data;
 }
